@@ -11,7 +11,7 @@
 <script>
 export default {
   created() {
-    this.$store.dispatch('FETCH_PEOPLE');
+    this.$store.dispatch('fetchPeople');
   },
 };
 </script>

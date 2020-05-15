@@ -27,7 +27,7 @@ export const actions = {
 
 export default new Vuex.Store({
   state: {
-    people: null,
+    people: [],
   },
   mutations,
   actions,

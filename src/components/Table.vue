@@ -10,13 +10,20 @@
         <th class="preferences_pet">Favorite Pet</th>
         <th class="preferences_fruit">Favorite Fruit</th>
       </tr>
+      <TableRow v-for="person in $store.state.people" :key=person.id :datum=person>
+        </TableRow>
     </table>
   </section>
 </template>
 
 <script>
+import TableRow from '@/components/TableRow.vue';
+
 export default {
   name: 'Table',
+  components: {
+    TableRow,
+  },
   props: {
     title: String,
   },
