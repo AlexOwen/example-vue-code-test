@@ -9,7 +9,6 @@ export const mutations = {
   },
   setChartOption: (state, payload) => {
     // update the current displayed variable
-    console.log(payload);
     state.chartOption = payload;
   },
   setChartLabels: (state) => {

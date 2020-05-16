@@ -31,10 +31,5 @@ export default {
       },
     },
   },
-  // methods: {
-  //   updateOption: (e) => {
-  //     store.commit('setChartOption', e.target.value);
-  //   },
-  // },
 };
 </script>
