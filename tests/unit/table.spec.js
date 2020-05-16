@@ -76,7 +76,7 @@ describe('Table.vue', () => {
     expect(wrapper.find('.gender').text()).to.equal('Gender');
     expect(wrapper.find('.age').text()).to.equal('Age');
     expect(wrapper.find('.eyecolor').text()).to.equal('Eye Color');
-    expect(wrapper.find('.preferences_pet').text()).to.equal('Favorite Pet');
-    expect(wrapper.find('.preferences_fruit').text()).to.equal('Favorite Fruit');
+    expect(wrapper.find('.preferences_pet').text()).to.equal('Preferred Pet');
+    expect(wrapper.find('.preferences_fruit').text()).to.equal('Preferred Fruit');
   });
 });

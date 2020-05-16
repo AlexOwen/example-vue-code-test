@@ -1,22 +1,25 @@
 <template>
   <section class="chart">
     <h2>{{ title }}</h2>
-    <BarChart :options="options" :chart-data="chartData"></BarChart>
-    <PieChart :options="options" :chart-data="chartData"></PieChart>
+    <ChartOptionSelector />
+    <BarChart :options="barOptions" :chart-data="chartData"></BarChart>
+    <PieChart :options="pieOptions" :chart-data="chartData"></PieChart>
   </section>
 </template>
 
 <script>
+import ChartOptionSelector from '@/components/ChartOptionSelector.vue';
 import BarChart from '@/components/BarChart.vue';
 import PieChart from '@/components/PieChart.vue';
 import store from '../store/index';
 
 export default {
-  name: 'Chart',
+  name: 'ChartContainer',
   props: {
     title: String,
   },
   components: {
+    ChartOptionSelector,
     BarChart,
     PieChart,
   },
@@ -27,9 +30,27 @@ export default {
     }),
   },
   data: () => ({
-    options: {
+    pieOptions: {
       responsive: true,
       maintainAspectRatio: false,
+    },
+    barOptions: {
+      responsive: true,
+      maintainAspectRatio: false,
+      scales: {
+        xAxes: [{
+          display: true,
+          scaleLabel: {
+            display: true,
+          },
+        }],
+        yAxes: [{
+          display: true,
+          ticks: {
+            beginAtZero: true,
+          },
+        }],
+      },
     },
   }),
 };

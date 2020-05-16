@@ -9,6 +9,7 @@ export const mutations = {
   },
   setChartOption: (state, payload) => {
     // update the current displayed variable
+    console.log(payload);
     state.chartOption = payload;
   },
   setChartLabels: (state) => {
@@ -23,7 +24,7 @@ export const mutations = {
         labels.push(person[currentOption]);
       }
     });
-    state.chartLabels = [...new Set(labels)];
+    state.chartLabels = [...new Set(labels.sort())];
   },
   setChartData: (state) => {
     const currentOption = state.chartOption;

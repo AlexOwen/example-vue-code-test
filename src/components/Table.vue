@@ -7,8 +7,8 @@
         <th class="gender">Gender</th>
         <th class="age">Age</th>
         <th class="eyecolor">Eye Color</th>
-        <th class="preferences_pet">Favorite Pet</th>
-        <th class="preferences_fruit">Favorite Fruit</th>
+        <th class="preferences_pet">Preferred Pet</th>
+        <th class="preferences_fruit">Preferred Fruit</th>
       </tr>
       <TableRow v-for="(person, index) in $store.state.people"
         :key="person.id"
