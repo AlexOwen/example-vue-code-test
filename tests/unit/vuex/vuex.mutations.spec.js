@@ -94,9 +94,22 @@ describe('Vuex', () => {
     });
 
     describe('setChartOption', () => {
-      it('setChartOption', () => {
+      it('sets chartOption', () => {
         const state = {
-          chartType: 'bar',
+          chartOption: 'eyeColor',
+        };
+
+        const { setChartOption } = mutations;
+
+        setChartOption(state, 'gender');
+
+        expect(state.chartOption).to.equal('gender');
+      });
+    });
+
+    describe('setChartData', () => {
+      it('setChartData', () => {
+        const state = {
           chartOption: 'eyeColor',
           chartLabels: ['blue'],
           chartData: [
@@ -119,17 +132,17 @@ describe('Vuex', () => {
           }],
         };
 
-        const { setChartOption } = mutations;
+        const { setChartData } = mutations;
 
-        setChartOption(state, 'gender');
+        setChartData(state);
 
         expect(state.chartData[0].data).to.exist;
         expect(state.chartData[0].data).to.deep.equal([1]);
         expect(state.chartData[0].label).to.exist;
-        expect(state.chartData[0].label).to.equal('gender');
+        expect(state.chartData[0].label).to.equal('eyeColor');
         expect(state.chartData[0].backgroundColor).to.exist;
-        expect(state.chartOption).to.equal('gender');
-        expect(state.chartLabels).to.deep.equal(['female']);
+        expect(state.chartOption).to.equal('eyeColor');
+        expect(state.chartLabels).to.deep.equal(['blue']);
       });
     });
 

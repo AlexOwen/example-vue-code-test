@@ -10,26 +10,32 @@ export const mutations = {
   setChartOption: (state, payload) => {
     // update the current displayed variable
     state.chartOption = payload;
+  },
+  setChartLabels: (state) => {
+    const currentOption = state.chartOption;
 
     // update the labels for the data
     const labels = [];
     state.people.forEach((person) => {
-      if (payload.includes('_')) {
-        labels.push(person[payload.split('_')[0]][payload.split('_')[1]]);
+      if (currentOption.includes('_')) {
+        labels.push(person[currentOption.split('_')[0]][currentOption.split('_')[1]]);
       } else {
-        labels.push(person[payload]);
+        labels.push(person[currentOption]);
       }
     });
     state.chartLabels = [...new Set(labels)];
+  },
+  setChartData: (state) => {
+    const currentOption = state.chartOption;
 
     // update the data to be displayed
     const labelCounts = [];
     state.people.forEach((person) => {
-      if (payload.includes('_')) {
-        const index = state.chartLabels.indexOf(person[payload.split('_')[0]][payload.split('_')[1]]);
+      if (currentOption.includes('_')) {
+        const index = state.chartLabels.indexOf(person[currentOption.split('_')[0]][currentOption.split('_')[1]]);
         labelCounts[index] = labelCounts[index] ? labelCounts[index] + 1 : 1;
       } else {
-        const index = state.chartLabels.indexOf(person[payload]);
+        const index = state.chartLabels.indexOf(person[currentOption]);
         labelCounts[index] = labelCounts[index] ? labelCounts[index] + 1 : 1;
       }
     });
@@ -70,6 +76,11 @@ export const actions = {
   },
   initialiseChart: (context) => {
     context.commit('setChartOption', 'preferences_fruit');
+    context.dispatch('refreshChart');
+  },
+  refreshChart: (context) => {
+    context.commit('setChartLabels');
+    context.commit('setChartData');
   },
 };
 

@@ -43,6 +43,7 @@ export default {
       },
       set(value) {
         store.commit('updatePerson', { ...store.state.people[this.personIndex], name: value });
+        store.dispatch('refreshChart');
       },
     },
     age: {
@@ -51,6 +52,7 @@ export default {
       },
       set(value) {
         store.commit('updatePerson', { ...store.state.people[this.personIndex], age: value });
+        store.dispatch('refreshChart');
       },
     },
     eyeColor: {
@@ -59,6 +61,7 @@ export default {
       },
       set(value) {
         store.commit('updatePerson', { ...store.state.people[this.personIndex], eyeColor: value });
+        store.dispatch('refreshChart');
       },
     },
     gender: {
@@ -67,6 +70,7 @@ export default {
       },
       set(value) {
         store.commit('updatePerson', { ...store.state.people[this.personIndex], gender: value });
+        store.dispatch('refreshChart');
       },
     },
     pet: {
@@ -75,6 +79,7 @@ export default {
       },
       set(value) {
         store.commit('updatePerson', { ...store.state.people[this.personIndex], preferences: { ...store.state.people[this.personIndex].preferences, pet: value } });
+        store.dispatch('refreshChart');
       },
     },
     fruit: {
@@ -83,6 +88,7 @@ export default {
       },
       set(value) {
         store.commit('updatePerson', { ...store.state.people[this.personIndex], preferences: { ...store.state.people[this.personIndex].preferences, fruit: value } });
+        store.dispatch('refreshChart');
       },
     },
   },

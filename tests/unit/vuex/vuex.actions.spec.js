@@ -43,7 +43,11 @@ describe('Vuex', () => {
         expect(data).to.equal('preferences_fruit');
       };
 
-      return actions.initialiseChart({ commit });
+      const dispatch = (type) => {
+        expect(type).to.equal('refreshChart');
+      };
+
+      return actions.initialiseChart({ commit, dispatch });
     });
   });
 
