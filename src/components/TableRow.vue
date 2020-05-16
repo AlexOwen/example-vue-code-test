@@ -1,19 +1,90 @@
 <template>
   <tr>
-    <td class="name">{{ datum.name }}</td>
-    <td class="gender">{{ datum.gender }}</td>
-    <td class="age">{{ datum.age }}</td>
-    <td class="eyecolor">{{ datum.eyeColor }}</td>
-    <td class="preferences_pet">{{ datum.preferences.pet }}</td>
-    <td class="preferences_fruit">{{ datum.preferences.fruit }}</td>
+    <td class="name">
+      <input
+        type="text"
+        v-model="name" />
+    </td>
+    <td class="gender">
+      <input type="text"
+        v-model="gender" />
+      </td>
+    <td class="age">
+      <input type="text"
+        v-model="age" />
+    </td>
+    <td class="eyecolor">
+      <input type="text"
+        v-model="eyeColor" />
+    </td>
+    <td class="preferences_pet">
+      <input type="text"
+        v-model="pet" />
+    </td>
+    <td class="preferences_fruit">
+      <input type="text"
+        v-model="fruit" />
+    </td>
   </tr>
 </template>
 
 <script>
+import store from '../store/index';
+
 export default {
   name: 'TableRow',
   props: {
-    datum: Object,
+    personIndex: Number,
+  },
+  computed: {
+    name: {
+      get() {
+        return store.state.people[this.personIndex].name;
+      },
+      set(value) {
+        store.commit('updatePerson', { ...store.state.people[this.personIndex], name: value });
+      },
+    },
+    age: {
+      get() {
+        return store.state.people[this.personIndex].age;
+      },
+      set(value) {
+        store.commit('updatePerson', { ...store.state.people[this.personIndex], age: value });
+      },
+    },
+    eyeColor: {
+      get() {
+        return store.state.people[this.personIndex].eyeColor;
+      },
+      set(value) {
+        store.commit('updatePerson', { ...store.state.people[this.personIndex], eyeColor: value });
+      },
+    },
+    gender: {
+      get() {
+        return store.state.people[this.personIndex].gender;
+      },
+      set(value) {
+        store.commit('updatePerson', { ...store.state.people[this.personIndex], gender: value });
+      },
+    },
+    pet: {
+      get() {
+        return store.state.people[this.personIndex].preferences.pet;
+      },
+      set(value) {
+        store.commit('updatePerson', { ...store.state.people[this.personIndex], preferences: { ...store.state.people[this.personIndex].preferences, pet: value } });
+      },
+    },
+    fruit: {
+      get() {
+        return store.state.people[this.personIndex].preferences.fruit;
+      },
+      set(value) {
+        store.commit('updatePerson', { ...store.state.people[this.personIndex], preferences: { ...store.state.people[this.personIndex].preferences, fruit: value } });
+      },
+    },
   },
 };
 </script>

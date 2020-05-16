@@ -3,7 +3,7 @@ import { shallowMount } from '@vue/test-utils';
 import PieChart from '@/components/PieChart.vue';
 
 describe('PieChart.vue', () => {
-  it.only('renders a canvas', async () => {
+  it('renders a canvas', async () => {
     const wrapper = shallowMount(PieChart, {
       propsData: {
         chartData: {

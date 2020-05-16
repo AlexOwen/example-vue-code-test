@@ -32,8 +32,5 @@ export default {
       maintainAspectRatio: false,
     },
   }),
-  mounted() {
-    console.log(JSON.stringify(this.chartData));
-  },
 };
 </script>

@@ -10,8 +10,9 @@
         <th class="preferences_pet">Favorite Pet</th>
         <th class="preferences_fruit">Favorite Fruit</th>
       </tr>
-      <TableRow v-for="person in $store.state.people" :key=person.id :datum=person>
-        </TableRow>
+      <TableRow v-for="(person, index) in $store.state.people"
+        :key="person.id"
+        :person-index="index" />
     </table>
   </section>
 </template>

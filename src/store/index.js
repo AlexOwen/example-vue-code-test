@@ -33,7 +33,6 @@ export const mutations = {
         labelCounts[index] = labelCounts[index] ? labelCounts[index] + 1 : 1;
       }
     });
-    console.log(labelCounts);
     state.chartData = [{
       label: state.chartOption,
       data: labelCounts,
@@ -45,6 +44,13 @@ export const mutations = {
         return colors;
       })(),
     }];
+  },
+  updatePerson: (state, payload) => {
+    state.people.forEach((person, index) => {
+      if (person._id === payload._id) {
+        state.people[index] = payload;
+      }
+    });
   },
 };
 
