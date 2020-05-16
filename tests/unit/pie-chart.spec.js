@@ -3,21 +3,23 @@ import { shallowMount } from '@vue/test-utils';
 import PieChart from '@/components/PieChart.vue';
 
 describe('PieChart.vue', () => {
-  it('renders the pie chart title', async () => {
-    const title = 'Pie Chart';
+  it.only('renders a canvas', async () => {
     const wrapper = shallowMount(PieChart, {
-      propsData: { title },
+      propsData: {
+        chartData: {
+          labels: ['test'],
+          datasets: [{
+            label: 'test',
+            backgroundColor: '#f55',
+            data: [1, 2],
+          }],
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+        },
+      },
     });
-    expect(wrapper.find('h2').text()).to.equal(title);
-  });
-
-  it('renders the pie chart container', async () => {
-    const wrapper = shallowMount(PieChart);
-    expect(wrapper.find('.pie-chart')).to.exist;
-  });
-
-  it('renders a canvas', async () => {
-    const wrapper = shallowMount(PieChart);
     expect(wrapper.find('canvas')).to.exist;
   });
 });

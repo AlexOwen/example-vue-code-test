@@ -120,7 +120,10 @@ describe('Vuex', () => {
 
       setChartOption(state, 'gender');
 
-      expect(state.chartData).to.deep.equal(['female']);
+      expect(state.chartData).to.deep.equal([{
+        data: [1],
+        label: 'gender',
+      }]);
       expect(state.chartOption).to.equal('gender');
       expect(state.chartLabels).to.deep.equal(['female']);
     });

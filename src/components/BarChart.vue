@@ -16,6 +16,20 @@ export default {
     },
   },
   mounted() {
+    this.options.scales = {
+      xAxes: [{
+        display: true,
+        scaleLabel: {
+          display: true,
+        },
+      }],
+      yAxes: [{
+        display: true,
+        ticks: {
+          beginAtZero: true,
+        },
+      }],
+    };
     this.renderChart(this.chartData, this.options);
   },
 };

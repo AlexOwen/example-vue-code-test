@@ -10,8 +10,9 @@
 
 <script>
 export default {
-  created() {
-    this.$store.dispatch('fetchPeople');
+  async created() {
+    await this.$store.dispatch('fetchPeople');
+    this.$store.dispatch('initialiseChart');
   },
 };
 </script>

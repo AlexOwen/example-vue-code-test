@@ -1,14 +1,23 @@
-<template>
-  <section class="pie-chart">
-    <h2>{{ title }}</h2>
-  </section>
-</template>
-
 <script>
+import { Pie, mixins } from 'vue-chartjs';
+
 export default {
   name: 'PieChart',
+  extends: Pie,
+  mixins: [mixins.reactiveProp],
   props: {
-    title: String,
+    chartData: {
+      type: Object,
+      default: null,
+    },
+    options: {
+      type: Object,
+      default: null,
+    },
+  },
+  mounted() {
+    this.options.scales = {};
+    this.renderChart(this.chartData, this.options);
   },
 };
 </script>

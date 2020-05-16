@@ -6,7 +6,7 @@ describe('BarChart.vue', () => {
   it('renders a canvas', async () => {
     const wrapper = shallowMount(BarChart, {
       propsData: {
-        chartdata: {
+        chartData: {
           labels: ['test'],
           datasets: [{
             label: 'test',

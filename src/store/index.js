@@ -23,19 +23,27 @@ export const mutations = {
     state.chartLabels = [...new Set(labels)];
 
     // update the data to be displayed
-    const labelCount = [];
+    const labelCounts = [];
     state.people.forEach((person) => {
       if (payload.includes('_')) {
         const index = state.chartLabels.indexOf(person[payload.split('_')[0]][payload.split('_')[1]]);
-        labelCount[index] = labelCount[index] ? labelCount[index] + 1 : 1;
+        labelCounts[index] = labelCounts[index] ? labelCounts[index] + 1 : 1;
       } else {
         const index = state.chartLabels.indexOf(person[payload]);
-        labelCount[index] = labelCount[index] ? labelCount[index] + 1 : 1;
+        labelCounts[index] = labelCounts[index] ? labelCounts[index] + 1 : 1;
       }
     });
+    console.log(labelCounts);
     state.chartData = [{
       label: state.chartOption,
-      data: labelCount,
+      data: labelCounts,
+      backgroundColor: (() => {
+        const colors = [];
+        for (let i = 0; i < state.chartLabels.length; i += 1) {
+          colors.push(`rgb(${Math.floor(Math.random() * 255)},${Math.floor(Math.random() * 255)},${Math.floor(Math.random() * 255)})`);
+        }
+        return colors;
+      })(),
     }];
   },
 };
@@ -53,7 +61,9 @@ export const actions = {
       console.error('Failed to retrieve data.json: ', err.message);
     }
     context.commit('setPeople', data);
-    context.commit('setChartOption', 'preferences_pet');
+  },
+  initialiseChart: (context) => {
+    context.commit('setChartOption', 'preferences_fruit');
   },
 };
 
@@ -65,7 +75,7 @@ export default new Vuex.Store({
     chartData: [{
       data: null,
     }],
-    chartOption: 'eyeColor',
+    chartOption: 'preferences_fruit',
   },
   mutations,
   actions,

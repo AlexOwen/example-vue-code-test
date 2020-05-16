@@ -36,6 +36,15 @@ describe('Vuex', () => {
 
       return actions.fetchPeople({ commit });
     });
+
+    it('initialiseChart', () => {
+      const commit = (type, data) => {
+        expect(type).to.equal('setChartOption');
+        expect(data).to.equal('preferences_pet');
+      };
+
+      return actions.initialiseChart({ commit });
+    });
   });
 
   describe('failed actions', () => {
