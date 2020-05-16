@@ -3,7 +3,7 @@ import { mutations } from '../../../src/store/index';
 
 describe('Vuex', () => {
   describe('mutations', () => {
-    it('setPeople: add initial people', async () => {
+    it('setPeople: add initial people', () => {
       const person = {
         _id: '5d5d7ad6ae763b95f3a7f3fe',
         age: 31,
@@ -33,7 +33,7 @@ describe('Vuex', () => {
       expect(state.people).to.deep.equal([person]);
     });
 
-    it('setPeople: replace people', async () => {
+    it('setPeople: replace people', () => {
       const person = {
         _id: '5d5d7ad60d207e06de94dfae',
         age: 26,
@@ -89,6 +89,40 @@ describe('Vuex', () => {
           fruit: 'banana',
         },
       }]);
+    });
+
+    it('setChartOption', () => {
+      const state = {
+        chartType: 'bar',
+        chartOption: 'eyeColor',
+        chartLabels: ['blue'],
+        chartData: [
+          'blue',
+        ],
+        people: [{
+          _id: '5d5d7ad6ae763b95f3a7f3fe',
+          age: 31,
+          eyeColor: 'blue',
+          name: 'Carolina Chaney',
+          gender: 'female',
+          location: {
+            latitude: -3.69726,
+            longitude: -122.033715,
+          },
+          preferences: {
+            pet: 'dog',
+            fruit: 'banana',
+          },
+        }],
+      };
+
+      const { setChartOption } = mutations;
+
+      setChartOption(state, 'gender');
+
+      expect(state.chartData).to.deep.equal(['female']);
+      expect(state.chartOption).to.equal('gender');
+      expect(state.chartLabels).to.deep.equal(['female']);
     });
   });
 });

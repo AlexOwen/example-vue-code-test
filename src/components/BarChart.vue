@@ -1,12 +1,22 @@
-<template>
-  <h2>{{ title }}</h2>
-</template>
-
 <script>
+import { Bar, mixins } from 'vue-chartjs';
+
 export default {
   name: 'BarChart',
+  extends: Bar,
+  mixins: [mixins.reactiveProp],
   props: {
-    title: String,
+    chartData: {
+      type: Object,
+      default: null,
+    },
+    options: {
+      type: Object,
+      default: null,
+    },
+  },
+  mounted() {
+    this.renderChart(this.chartData, this.options);
   },
 };
 </script>

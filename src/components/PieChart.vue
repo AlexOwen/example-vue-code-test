@@ -1,5 +1,7 @@
 <template>
-  <h2>{{ title }}</h2>
+  <section class="pie-chart">
+    <h2>{{ title }}</h2>
+  </section>
 </template>
 
 <script>
