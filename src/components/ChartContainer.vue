@@ -1,9 +1,11 @@
 <template>
-  <section class="chart">
+  <section class="chart-container">
     <h2>{{ title }}</h2>
     <ChartOptionSelector />
-    <BarChart :options="barOptions" :chart-data="chartData"></BarChart>
-    <PieChart :options="pieOptions" :chart-data="chartData"></PieChart>
+    <div class="charts">
+      <BarChart :options="barOptions" :chart-data="chartData" class="barchart"></BarChart>
+      <PieChart :options="pieOptions" :chart-data="chartData" class="piechart"></PieChart>
+    </div>
   </section>
 </template>
 
@@ -55,3 +57,20 @@ export default {
   }),
 };
 </script>
+
+<style lang="scss">
+.chart-container {
+  width: 100%;
+
+  .charts {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    width: 100%;
+
+    div.piechart, div.barchart {
+      padding: 0 5%;
+    }
+  }
+}
+</style>

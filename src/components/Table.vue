@@ -1,5 +1,5 @@
 <template>
-  <section>
+  <section class="table-section">
     <h2>{{ title }}</h2>
     <table>
       <tr>
@@ -30,3 +30,13 @@ export default {
   },
 };
 </script>
+
+<style lang="scss">
+.table-section {
+  width: 100%;
+
+  table {
+    margin: auto;
+  }
+}
+</style>
