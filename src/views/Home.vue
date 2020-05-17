@@ -7,7 +7,6 @@
 </template>
 
 <script>
-// @ is an alias to /src
 import Title from '@/components/Title.vue';
 import ChartContainer from '@/components/ChartContainer.vue';
 import Table from '@/components/Table.vue';

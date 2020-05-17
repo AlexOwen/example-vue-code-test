@@ -20,12 +20,20 @@
 <script>
 import TableRow from '@/components/TableRow.vue';
 
+/**
+ * A table of data.
+ * Headers are hard coded with the assumption the JSON data will not change.
+ * TODO: dynamically change the headers based on the data.
+ */
 export default {
   name: 'Table',
   components: {
     TableRow,
   },
   props: {
+    /**
+     * The title of the table.
+     */
     title: String,
   },
 };

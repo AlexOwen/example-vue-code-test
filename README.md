@@ -37,4 +37,4 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
 
 ## Known issues
 
-* The graphs do not always re-render correctly when navigating between Home and About pages. A workaround it to refresh the page.
+* None

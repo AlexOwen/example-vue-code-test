@@ -7,7 +7,7 @@ global.fetch = fetch;
 
 describe('Vuex', () => {
   describe('actions', () => {
-    it('fetchPeople', async () => {
+    it('fetchPeople: works with expected data', async () => {
       const person = {
         _id: '5d5d7ad60d207e06de94dfae',
         age: 26,
@@ -34,7 +34,7 @@ describe('Vuex', () => {
         httpServer.close();
       };
 
-      return actions.fetchPeople({ commit });
+      actions.fetchPeople({ commit });
     });
 
     it('initialiseChart', () => {
@@ -47,7 +47,17 @@ describe('Vuex', () => {
         expect(type).to.equal('refreshChart');
       };
 
-      return actions.initialiseChart({ commit, dispatch });
+      actions.initialiseChart({ commit, dispatch });
+    });
+
+    it('refreshChart', () => {
+      const commits = [];
+      const commit = (type) => {
+        commits.push(type);
+      };
+
+      actions.refreshChart({ commit });
+      expect(commits).to.deep.equal(['setChartLabels', 'setChartData']);
     });
   });
 
@@ -64,7 +74,7 @@ describe('Vuex', () => {
         httpServer.close();
       };
 
-      return actions.fetchPeople({ commit });
+      actions.fetchPeople({ commit });
     });
   });
 });

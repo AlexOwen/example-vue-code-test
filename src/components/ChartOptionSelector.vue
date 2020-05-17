@@ -28,9 +28,17 @@
 <script>
 import store from '../store/index';
 
+/**
+ * Radio buttons for choosing the variable to display in the graphs.
+ * Labels and values are hard coded with the assumption the JSON data will not change.
+ * TODO: dynamically change the labels and values based on the data.
+ */
 export default {
   name: 'ChartOptionSelector',
   computed: {
+    /**
+     * The current variable to display on the graph, from the Vuex store.
+     */
     option: {
       get() {
         return store.state.chartOption;

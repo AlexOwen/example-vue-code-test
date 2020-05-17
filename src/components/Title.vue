@@ -3,16 +3,17 @@
 </template>
 
 <script>
+/**
+ * An H1 title.
+ * This was made to remind me how to use Vue.js and is probably too granular for production.
+ */
 export default {
   name: 'Title',
   props: {
+    /**
+     * The text to display in the title
+     */
     title: String,
   },
 };
 </script>
-
-<style scoped lang="scss">
-  h1 {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  }
-</style>

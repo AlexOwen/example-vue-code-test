@@ -31,12 +31,25 @@
 <script>
 import store from '../store/index';
 
+/**
+ * A row in the data table using data from the Vuex store.
+ * Data will be read from and written to the store on input.
+ * Column classes and computed propertiesare hard coded with the assumption the
+ * JSON data will not change.
+ * TODO: dynamically change the column classes and computed properties based on the data.
+ */
 export default {
   name: 'TableRow',
   props: {
+    /**
+     * The index in the store's list of people
+     */
     personIndex: Number,
   },
   computed: {
+    /**
+     * The person's name
+     */
     name: {
       get() {
         return store.state.people[this.personIndex].name;
@@ -46,6 +59,9 @@ export default {
         store.dispatch('refreshChart');
       },
     },
+    /**
+     * The person's age
+     */
     age: {
       get() {
         return store.state.people[this.personIndex].age;
@@ -55,6 +71,9 @@ export default {
         store.dispatch('refreshChart');
       },
     },
+    /**
+     * The person's eye color
+     */
     eyeColor: {
       get() {
         return store.state.people[this.personIndex].eyeColor;
@@ -64,6 +83,9 @@ export default {
         store.dispatch('refreshChart');
       },
     },
+    /**
+     * The person's gender
+     */
     gender: {
       get() {
         return store.state.people[this.personIndex].gender;
@@ -73,6 +95,9 @@ export default {
         store.dispatch('refreshChart');
       },
     },
+    /**
+     * The person's preferred pet
+     */
     pet: {
       get() {
         return store.state.people[this.personIndex].preferences.pet;
@@ -82,6 +107,9 @@ export default {
         store.dispatch('refreshChart');
       },
     },
+    /**
+     * The person's preferred fruit
+     */
     fruit: {
       get() {
         return store.state.people[this.personIndex].preferences.fruit;
