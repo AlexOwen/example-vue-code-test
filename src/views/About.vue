@@ -6,6 +6,7 @@
     <p>It was written using TDD, and should contain tests for all parts of all components.</p>
     <p>It was written with these assumptions:</p>
     <ul>
+      <li>This website is desktop-based and only needs to be marginally responsive</li>
       <li>This is an MVP and should meet the brief without scope creep or implied features</li>
       <li>Chart.js and other dependencies have been thoroughly tested, so do not need additional
         testing</li>
